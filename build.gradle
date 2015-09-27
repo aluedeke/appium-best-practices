@@ -1,0 +1,16 @@
+group 'org.testobject.appium.examples'
+version '1.0-SNAPSHOT'
+
+apply plugin: 'java'
+
+sourceCompatibility = 1.5
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testCompile 'junit:junit:4.11'
+    testCompile 'io.appium:java-client:3.2.0';
+
+}
