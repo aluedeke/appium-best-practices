@@ -4,6 +4,7 @@ import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 import org.openqa.selenium.By;
+import org.testobject.example.komoot.data.User;
 
 public class EmailSignupScreen extends AbstractScreen {
 
@@ -23,18 +24,18 @@ public class EmailSignupScreen extends AbstractScreen {
         super(driver);
     }
 
-    public void signup(String displayName, String email, String password) {
+    public void signup(User user) {
         driver.hideKeyboard();
 
-        displayNameTextField.sendKeys(displayName);
-
-        driver.hideKeyboard();
-
-        emailTextField.sendKeys(email);
+        displayNameTextField.sendKeys(user.displayName);
 
         driver.hideKeyboard();
 
-        passwordTextField.sendKeys(password);
+        emailTextField.sendKeys(user.email);
+
+        driver.hideKeyboard();
+
+        passwordTextField.sendKeys(user.password);
 
         driver.hideKeyboard();
 

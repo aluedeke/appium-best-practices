@@ -12,9 +12,6 @@ import java.io.File;
 import java.net.MalformedURLException;
 import java.net.URL;
 
-/**
- * Created by aluedeke on 27.09.15.
- */
 public abstract class AbstractTest {
 
     protected Komoot app;

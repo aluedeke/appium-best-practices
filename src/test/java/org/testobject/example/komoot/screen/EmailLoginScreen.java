@@ -4,6 +4,7 @@ import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 import org.openqa.selenium.By;
+import org.testobject.example.komoot.data.User;
 
 public class EmailLoginScreen extends AbstractScreen {
 
@@ -20,9 +21,9 @@ public class EmailLoginScreen extends AbstractScreen {
         super(driver);
     }
 
-    public void login(String username, String password) {
-        emailTextField.sendKeys(username);
-        passwordTextField.sendKeys(password);
+    public void login(User credentials) {
+        emailTextField.sendKeys(credentials.email);
+        passwordTextField.sendKeys(credentials.password);
         loginButton.click();
 
         waitUntil(loaded());
