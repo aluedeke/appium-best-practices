@@ -1,12 +1,16 @@
 package org.testobject.example.komoot.screen;
 
 import io.appium.java_client.AppiumDriver;
+import io.appium.java_client.MobileElement;
+import io.appium.java_client.pagefactory.AndroidFindBy;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import static org.openqa.selenium.By.id;
+import static org.openqa.selenium.support.ui.ExpectedConditions.invisibilityOfElementLocated;
 
 /**
  * Created by aluedeke on 27.09.15.
@@ -15,21 +19,27 @@ public class EmailLoginScreen {
 
     private AppiumDriver driver;
 
+    @AndroidFindBy(id = "edittext_email")
+    private MobileElement emailTextField;
+
+    @AndroidFindBy(id = "edittext_password")
+    private MobileElement passwordTextField;
+
+    @AndroidFindBy(id = "button_login")
+    private MobileElement loginButton;
+
     public EmailLoginScreen(AppiumDriver driver) {
         this.driver = driver;
+
+        PageFactory.initElements(driver, this);
     }
 
     public void login(String username, String password) {
-        WebElement emailTextField = driver.findElement(By.id("edittext_email"));
         emailTextField.sendKeys(username);
-
-        WebElement passwordTextField = driver.findElement(By.id("edittext_password"));
         passwordTextField.sendKeys(password);
-
-        WebElement loginButton = driver.findElement(By.id("button_login"));
         loginButton.click();
 
-        new WebDriverWait(driver, 10).until(ExpectedConditions.invisibilityOfElementLocated(By.tagName("ProgressBar")));
+        new WebDriverWait(driver, 10).until(invisibilityOfElementLocated(By.tagName("ProgressBar")));
     }
 
     public boolean isLoggedIn() {

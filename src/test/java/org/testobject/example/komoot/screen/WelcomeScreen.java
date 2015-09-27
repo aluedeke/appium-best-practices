@@ -1,11 +1,17 @@
 package org.testobject.example.komoot.screen;
 
 import io.appium.java_client.AppiumDriver;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
+import io.appium.java_client.MobileElement;
+import io.appium.java_client.pagefactory.AndroidFindBy;
 
 
 public class WelcomeScreen {
+
+    @AndroidFindBy(id = "textview_login")
+    private MobileElement loginLink;
+
+    @AndroidFindBy(id = "textview_mail_register_txt")
+    private MobileElement signupLink;
 
     private AppiumDriver driver;
 
@@ -14,12 +20,10 @@ public class WelcomeScreen {
     }
 
     public void openEmailLogin() {
-        WebElement loginLink = driver.findElement(By.id("textview_login"));
         loginLink.click();
     }
 
     public void openEmailSignup() {
-        WebElement signupLink = driver.findElement(By.id("textview_mail_register_txt"));
         signupLink.click();
     }
 }
