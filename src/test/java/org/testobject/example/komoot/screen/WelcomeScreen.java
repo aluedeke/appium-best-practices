@@ -4,8 +4,7 @@ import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 
-
-public class WelcomeScreen {
+public class WelcomeScreen extends AbstractScreen {
 
     @AndroidFindBy(id = "textview_login")
     private MobileElement loginLink;
@@ -13,10 +12,8 @@ public class WelcomeScreen {
     @AndroidFindBy(id = "textview_mail_register_txt")
     private MobileElement signupLink;
 
-    private AppiumDriver driver;
-
     public WelcomeScreen(AppiumDriver driver) {
-        this.driver = driver;
+        super(driver);
     }
 
     public void openEmailLogin() {

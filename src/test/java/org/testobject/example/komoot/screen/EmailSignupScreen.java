@@ -4,14 +4,8 @@ import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 import org.openqa.selenium.By;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
-import static org.openqa.selenium.support.ui.ExpectedConditions.invisibilityOfElementLocated;
-
-/**
- * Created by aluedeke on 27.09.15.
- */
-public class EmailSignupScreen {
+public class EmailSignupScreen extends AbstractScreen {
 
     @AndroidFindBy(id = "edittext_display_name")
     private MobileElement displayNameTextField;
@@ -25,11 +19,8 @@ public class EmailSignupScreen {
     @AndroidFindBy(id = "button_register")
     private MobileElement signupButton;
 
-    private AppiumDriver driver;
-
     public EmailSignupScreen(AppiumDriver driver) {
-
-        this.driver = driver;
+        super(driver);
     }
 
     public void signup(String displayName, String email, String password) {
@@ -49,7 +40,7 @@ public class EmailSignupScreen {
 
         signupButton.click();
 
-        new WebDriverWait(driver, 10).until(invisibilityOfElementLocated(By.tagName("ProgressBar")));
+        waitUntil(loaded());
     }
 
     public boolean isSignedUp() {
